@@ -89,7 +89,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (passwordLen < 1) setPasswordLen(1);
-    if (passwordLen > 32) setPasswordLen(32);
+    if (passwordLen > 16) setPasswordLen(16);
   }, [passwordLen]);
 
   useEffect(() => {
@@ -127,7 +127,7 @@ const App: React.FC = () => {
             type="number"
             value={passwordLen}
             min={1}
-            max={32}
+            max={16}
             onChange={(e) => setPasswordLen(Number(e.target.value))}
             className="w-[288px] bg-white border-[#46ffe6] mb-2 py-2 px-4 border-l-[2px] border-r-[2px] text-[#424242] font-bold"
           />
