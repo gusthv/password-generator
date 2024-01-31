@@ -124,7 +124,7 @@ const App: React.FC = () => {
             className="w-[288px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-xl mb-2 py-2 px-4 text-[#424242] font-bold"
           />
           <div className="flex select-none">
-            <div className="grid grid-cols-2 gap-2 auto-rows-fr rounded-b-2xl">
+            <div className="grid grid-cols-2 gap-2 auto-rows-fr">
               {Object.keys(parameters).map((parameter, index) => (
                 <p
                   key={index}
