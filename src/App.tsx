@@ -18,8 +18,6 @@ const App: React.FC = () => {
   });
 
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [copyFailed, setCopyFailed] = useState<boolean>(false);
-  const [noParameters, setNoParameters] = useState<boolean>(false);
   const [copyString, setCopyString] = useState<string>("");
 
   const handleGeneratePassword = () => {
@@ -27,11 +25,9 @@ const App: React.FC = () => {
 
     if (!(lowercase || uppercase || numbers || symbols)) {
       setCopyString("Select a parameter!");
-      setNoParameters(true);
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);
-        setNoParameters(false);
       }, 1000);
     }
 
@@ -77,12 +73,10 @@ const App: React.FC = () => {
       }
     } catch (error) {
       setCopyString("Failed to copy!");
-      setCopyFailed(true);
     }
 
     setIsCopied(true);
     setTimeout(() => {
-      setCopyFailed(false);
       setIsCopied(false);
     }, 1000);
   };
@@ -97,27 +91,25 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-[#424242]">
+    <div className="w-screen h-screen bg-white">
       <div className="h-screen flex items-center justify-center">
         <div>
           <p
-            className={`w-[288px] mb-2 py-2 bg-white rounded-t-xl overflow-auto text-nowrap text-center font-bold text-xl ${
-              isCopied ? "text-[#46ffe6]" : "text-[#424242]"
-            } ${
-              copyFailed || noParameters ? "text-[#424242]" : ""
-            } border-[#46ffe6] border-l-[2px] border-t-[2px] border-r-[2px]`}
+            className={`w-[288px] mb-2 py-2 bg-[#4a4a4a5f]  border-translucent border-[2px] rounded-xl overflow-auto text-nowrap text-center font-bold text-xl ${
+              isCopied ? "text-[white]" : "text-[#424242]"
+            }`}
           >
             {isCopied ? copyString : password}
           </p>
-          <div className="w-[288px] mb-2 grid grid-cols-2 gap-2 auto-rows-fr text-white font-bold text-xl cursor-pointer select-none">
+          <div className="w-[288px] mb-2 grid grid-cols-2 gap-2 auto-rows-fr font-bold text-xl cursor-pointer select-none">
             <span
-              className="w-[140px] h-[40px] bg-white border-[#46ffe6] border-[2px] flex justify-center items-center text-[#424242] hover:text-[#46ffe6]"
+              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-l-xl flex justify-center items-center text-[#424242] hover:text-[white]"
               onClick={handleGeneratePassword}
             >
               <p>GENERATE</p>
             </span>
             <span
-              className="w-[140px] h-[40px] bg-white border-[#46ffe6] border-[2px] flex justify-center items-center text-[#424242] hover:text-[#46ffe6]"
+              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-r-xl flex justify-center items-center text-[#424242] hover:text-[white]"
               onClick={handleCopyToClipboard}
             >
               <p>COPY</p>
@@ -129,10 +121,10 @@ const App: React.FC = () => {
             min={1}
             max={16}
             onChange={(e) => setPasswordLen(Number(e.target.value))}
-            className="w-[288px] bg-white border-[#46ffe6] mb-2 py-2 px-4 border-l-[2px] border-r-[2px] text-[#424242] font-bold"
+            className="w-[288px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-xl mb-2 py-2 px-4 text-[#424242] font-bold"
           />
           <div className="flex select-none">
-            <div className="bg-[#424242] grid grid-cols-2 gap-2 auto-rows-fr rounded-b-2xl">
+            <div className="grid grid-cols-2 gap-2 auto-rows-fr rounded-b-2xl">
               {Object.keys(parameters).map((parameter, index) => (
                 <p
                   key={index}
@@ -143,13 +135,17 @@ const App: React.FC = () => {
                   }
                   className={`${
                     parameters[parameter as keyof typeof parameters]
-                      ? "border-[#46ffe6] hover:border-[#424242] text-[#424242] hover:text-[gray]"
-                      : "border-[#424242] hover:border-[#46ffe6] text-[gray] hover:text-[#46ffe6]"
-                  } w-[140px] h-[40px] bg-white border-[2px] flex justify-center items-center rounded-sm font-bold cursor-pointer ${
+                      ? "text-[#424242] hover:text-[gray]"
+                      : "text-[gray] hover:text-[#424242]"
+                  } w-[140px] h-[40px] bg-[#4a4a4a5f] border-translucent border-[2px] flex justify-center items-center font-bold cursor-pointer ${
                     parameter.toUpperCase() == "SYMBOLS"
-                      ? "rounded-br-xl"
+                      ? "rounded-r-xl"
                       : parameter.toUpperCase() == "NUMBERS"
-                      ? "rounded-bl-xl"
+                      ? "rounded-l-xl"
+                      : parameter.toUpperCase() == "UPPERCASE"
+                      ? "rounded-r-xl"
+                      : parameter.toUpperCase() == "LOWERCASE"
+                      ? "rounded-l-xl"
                       : ""
                   }`}
                 >
