@@ -24,7 +24,7 @@ const App: React.FC = () => {
     const { lowercase, uppercase, numbers, symbols } = parameters;
 
     if (!(lowercase || uppercase || numbers || symbols)) {
-      setCopyString("Select a parameter!");
+      setCopyString("SELECT A PARAMETER!");
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);
@@ -66,13 +66,13 @@ const App: React.FC = () => {
 
     try {
       const clipboard = await navigator.clipboard.readText();
-      if (password == clipboard) setCopyString("Already copied!");
+      if (password == clipboard) setCopyString("ALREADY COPIED!");
       else {
         await navigator.clipboard.writeText(password);
-        setCopyString("Copied!");
+        setCopyString("COPIED!");
       }
     } catch (error) {
-      setCopyString("Failed to copy!");
+      setCopyString("FAILED TO COPY!");
     }
 
     setIsCopied(true);
@@ -135,8 +135,8 @@ const App: React.FC = () => {
                   }
                   className={`${
                     parameters[parameter as keyof typeof parameters]
-                      ? "text-[white] hover:text-[gray] border-[2px] border-[gray]"
-                      : "text-[gray] hover:text-[white] border-[2px] hover:border-[gray] border-white"
+                      ? "text-[#424242] hover:text-[gray] border-[2px] border-[gray]"
+                      : "text-[#777777] hover:text-[white] border-[2px] hover:border-[gray] border-white"
                   } w-[140px] h-[40px] bg-[#4a4a4a5f] flex justify-center items-center font-bold cursor-pointer ${
                     parameter.toUpperCase() == "SYMBOLS"
                       ? "rounded-r-xl"
