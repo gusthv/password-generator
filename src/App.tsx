@@ -95,7 +95,7 @@ const App: React.FC = () => {
       <div className="h-screen flex items-center justify-center">
         <div>
           <p
-            className={`w-[288px] mb-2 py-2 bg-[#4a4a4a5f]  border-translucent border-[2px] rounded-xl overflow-auto text-nowrap text-center font-bold text-xl ${
+            className={`w-[288px] mb-2 py-2 bg-[#4a4a4a5f] border-[gray] border-[2px] rounded-xl overflow-auto text-nowrap text-center font-bold text-xl ${
               isCopied ? "text-[white]" : "text-[#424242]"
             }`}
           >
@@ -103,13 +103,13 @@ const App: React.FC = () => {
           </p>
           <div className="w-[288px] mb-2 grid grid-cols-2 gap-2 auto-rows-fr font-bold text-xl cursor-pointer select-none">
             <span
-              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-l-xl flex justify-center items-center text-[#424242] hover:text-[white]"
+              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-[gray] border-[2px] rounded-l-xl flex justify-center items-center text-[#424242] hover:text-[white]"
               onClick={handleGeneratePassword}
             >
               <p>GENERATE</p>
             </span>
             <span
-              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-r-xl flex justify-center items-center text-[#424242] hover:text-[white]"
+              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-[gray] border-[2px] rounded-r-xl flex justify-center items-center text-[#424242] hover:text-[white]"
               onClick={handleCopyToClipboard}
             >
               <p>COPY</p>
@@ -121,7 +121,7 @@ const App: React.FC = () => {
             min={1}
             max={16}
             onChange={(e) => setPasswordLen(Number(e.target.value))}
-            className="w-[288px] bg-[#4a4a4a5f] border-translucent border-[2px] rounded-xl mb-2 py-2 px-4 text-[#424242] font-bold"
+            className="w-[288px] bg-[#4a4a4a5f] border-[gray] border-[2px] rounded-xl mb-2 py-2 px-4 text-[#424242] font-bold"
           />
           <div className="flex select-none">
             <div className="grid grid-cols-2 gap-2 auto-rows-fr">
@@ -135,9 +135,9 @@ const App: React.FC = () => {
                   }
                   className={`${
                     parameters[parameter as keyof typeof parameters]
-                      ? "text-[#424242] hover:text-[gray]"
-                      : "text-[gray] hover:text-[#424242]"
-                  } w-[140px] h-[40px] bg-[#4a4a4a5f] border-translucent border-[2px] flex justify-center items-center font-bold cursor-pointer ${
+                      ? "text-[white] hover:text-[gray] border-[2px] border-[gray]"
+                      : "text-[gray] hover:text-[white] border-[2px] hover:border-[gray] border-white"
+                  } w-[140px] h-[40px] bg-[#4a4a4a5f] flex justify-center items-center font-bold cursor-pointer ${
                     parameter.toUpperCase() == "SYMBOLS"
                       ? "rounded-r-xl"
                       : parameter.toUpperCase() == "NUMBERS"
