@@ -82,7 +82,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    if (passwordLen < 1) setPasswordLen(1);
+    if (passwordLen < 4) setPasswordLen(4);
     if (passwordLen > 16) setPasswordLen(16);
   }, [passwordLen]);
 
@@ -91,25 +91,23 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-white">
+    <div className="w-screen h-screen bg-[#ffffff] font-ubuntu">
       <div className="h-screen flex items-center justify-center">
-        <div>
+        <div className="w-min-content h-min-content shadow-2xl">
           <p
-            className={`w-[288px] mb-2 py-2 bg-[#4a4a4a5f] border-[#4a4a4a5f] border-[2px] rounded-xl overflow-auto text-nowrap text-center font-bold text-xl ${
-              isCopied ? "text-[#ffffff]" : "text-[#424242]"
-            }`}
+            className={`w-[280px] py-2 bg-[#4a4a4a20] overflow-auto text-[#686868] text-xl text-nowrap text-center font-bold hover:shadow-md`}
           >
             {isCopied ? copyString : password}
           </p>
-          <div className="w-[288px] mb-2 grid grid-cols-2 gap-2 auto-rows-fr font-bold text-xl cursor-pointer select-none">
+          <div className="w-[280px] grid grid-cols-2 auto-rows-fr select-none text-xl font-bold cursor-pointer">
             <span
-              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-[#4a4a4a5f] border-[2px] rounded-l-xl flex justify-center items-center text-[#424242] hover:text-[#ffffff]"
+              className="w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
               onClick={handleGeneratePassword}
             >
-              <p>GENERATE</p>
+              <p>CREATE</p>
             </span>
             <span
-              className="w-[140px] h-[40px] bg-[#4a4a4a5f] border-[#4a4a4a5f] border-[2px] rounded-r-xl flex justify-center items-center text-[#424242] hover:text-[#ffffff]"
+              className="w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
               onClick={handleCopyToClipboard}
             >
               <p>COPY</p>
@@ -118,13 +116,13 @@ const App: React.FC = () => {
           <input
             type="number"
             value={passwordLen}
-            min={1}
+            min={4}
             max={16}
             onChange={(e) => setPasswordLen(Number(e.target.value))}
-            className="w-[288px] bg-[#4a4a4a5f] border-[#4a4a4a5f] border-[2px] rounded-xl mb-2 py-2 px-4 text-[#424242] font-bold"
+            className="w-[280px] bg-[#4a4a4a20] py-2 px-4 text-[#686868] font-bold hover:shadow-md"
           />
-          <div className="flex select-none">
-            <div className="grid grid-cols-2 gap-2 auto-rows-fr">
+          <div className="flex text-l select-none">
+            <div className="grid grid-cols-2 auto-rows-fr">
               {Object.keys(parameters).map((parameter, index) => (
                 <p
                   key={index}
@@ -135,19 +133,9 @@ const App: React.FC = () => {
                   }
                   className={`${
                     parameters[parameter as keyof typeof parameters]
-                      ? "text-[#424242] hover:text-[#42424250] border-[2px] border-[#4a4a4a5f]"
-                      : "text-[#777777] hover:text-[#ffffff] border-[2px] hover:border-[#4a4a4a5f] border-white"
-                  } w-[140px] h-[40px] bg-[#4a4a4a5f] flex justify-center items-center font-bold cursor-pointer ${
-                    parameter.toUpperCase() == "SYMBOLS"
-                      ? "rounded-r-xl"
-                      : parameter.toUpperCase() == "NUMBERS"
-                      ? "rounded-l-xl"
-                      : parameter.toUpperCase() == "UPPERCASE"
-                      ? "rounded-r-xl"
-                      : parameter.toUpperCase() == "LOWERCASE"
-                      ? "rounded-l-xl"
-                      : ""
-                  }`}
+                      ? "shadow-md text-[#686868] hover:text-[#a6a6a6] hover:shadow-none"
+                      : "shadow-none text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
+                  } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer`}
                 >
                   {parameter.toUpperCase()}
                 </p>
