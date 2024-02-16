@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Parameter } from "./components";
+import { Button, Parameters } from "./components";
 type ParameterTypes = {
   lowercase: boolean;
   uppercase: boolean;
@@ -111,7 +111,7 @@ const App: React.FC = () => {
             onChange={(e) => setPasswordLen(Number(e.target.value))}
             className="w-[280px] bg-[#4a4a4a20] py-2 px-4 text-[#686868] font-bold hover:shadow-md"
           />
-          <Parameter
+          <Parameters
             parameters={parameters}
             onClick={handleParameterSelection}
           />

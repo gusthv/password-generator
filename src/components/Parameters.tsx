@@ -5,7 +5,7 @@ type ParameterProps = {
   onClick: (parameter: string) => void;
 };
 
-const Parameter: React.FC<ParameterProps> = ({ parameters, onClick }) => {
+const Parameters: React.FC<ParameterProps> = ({ parameters, onClick }) => {
   const handleParameterSelection = (parameter: string) => {
     onClick(parameter);
   };
@@ -31,4 +31,4 @@ const Parameter: React.FC<ParameterProps> = ({ parameters, onClick }) => {
   );
 };
 
-export default Parameter;
+export default Parameters;
