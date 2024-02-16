@@ -133,8 +133,8 @@ const App: React.FC = () => {
                   }
                   className={`${
                     parameters[parameter as keyof typeof parameters]
-                      ? "shadow-md text-[#686868] hover:text-[#a6a6a6] hover:shadow-none"
-                      : "shadow-none text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
+                      ? "text-[#686868] hover:text-[#a6a6a6]"
+                      : "text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
                   } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer`}
                 >
                   {parameter.toUpperCase()}
