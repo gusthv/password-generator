@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { PrimaryButton } from "./components";
-
+import { Button, Parameter } from "./components";
 type ParameterTypes = {
   lowercase: boolean;
   uppercase: boolean;
@@ -55,10 +54,10 @@ const App: React.FC = () => {
     setPassword(passwordString);
   };
 
-  const handleParameterSelection = (parameter: keyof ParameterTypes) => {
+  const handleParameterSelection = (parameter: string) => {
     setParameters((prevParameters) => ({
       ...prevParameters,
-      [parameter]: !prevParameters[parameter],
+      [parameter]: !prevParameters[parameter as keyof ParameterTypes],
     }));
   };
 
@@ -101,8 +100,8 @@ const App: React.FC = () => {
             {isCopied ? copyString : password}
           </p>
           <div className="w-[280px] grid grid-cols-2 auto-rows-fr select-none text-xl font-bold cursor-pointer">
-            <PrimaryButton onClick={handleGeneratePassword} text="CREATE" />
-            <PrimaryButton onClick={handleCopyToClipboard} text="COPY" />
+            <Button onClick={handleGeneratePassword} text="CREATE" />
+            <Button onClick={handleCopyToClipboard} text="COPY" />
           </div>
           <input
             type="number"
@@ -112,27 +111,10 @@ const App: React.FC = () => {
             onChange={(e) => setPasswordLen(Number(e.target.value))}
             className="w-[280px] bg-[#4a4a4a20] py-2 px-4 text-[#686868] font-bold hover:shadow-md"
           />
-          <div className="flex text-l select-none">
-            <div className="grid grid-cols-2 auto-rows-fr">
-              {Object.keys(parameters).map((parameter, index) => (
-                <p
-                  key={index}
-                  onClick={() =>
-                    handleParameterSelection(
-                      parameter as keyof typeof parameters
-                    )
-                  }
-                  className={`${
-                    parameters[parameter as keyof typeof parameters]
-                      ? "text-[#686868] hover:text-[#a6a6a6]"
-                      : "text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
-                  } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer`}
-                >
-                  {parameter.toUpperCase()}
-                </p>
-              ))}
-            </div>
-          </div>
+          <Parameter
+            parameters={parameters}
+            onClick={handleParameterSelection}
+          />
         </div>
       </div>
     </div>
