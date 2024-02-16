@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { PrimaryButton } from "./components";
 
 type ParameterTypes = {
   lowercase: boolean;
@@ -100,18 +101,8 @@ const App: React.FC = () => {
             {isCopied ? copyString : password}
           </p>
           <div className="w-[280px] grid grid-cols-2 auto-rows-fr select-none text-xl font-bold cursor-pointer">
-            <span
-              className="w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
-              onClick={handleGeneratePassword}
-            >
-              <p>CREATE</p>
-            </span>
-            <span
-              className="w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
-              onClick={handleCopyToClipboard}
-            >
-              <p>COPY</p>
-            </span>
+            <PrimaryButton onClick={handleGeneratePassword} text="CREATE" />
+            <PrimaryButton onClick={handleCopyToClipboard} text="COPY" />
           </div>
           <input
             type="number"
