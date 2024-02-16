@@ -8,7 +8,7 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
   return (
     <button
-      className="w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
+      className="w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center text-[#686868] hover:shadow-md"
       onClick={onClick}
     >
       {text}
