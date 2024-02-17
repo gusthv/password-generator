@@ -7,3 +7,22 @@
   font-weight: 700;
   font-style: normal;
 }
+
+@keyframes resize {
+  0% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  50% {
+    width: 2rem;
+    height: 2rem;
+  }
+  100% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.animate-resize {
+  animation: resize 2s infinite;
+}

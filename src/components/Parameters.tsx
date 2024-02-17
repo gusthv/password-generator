@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { clickIcon } from "../assets";
 
 type ParameterProps = {
   parameters: Record<string, boolean>;
@@ -6,8 +7,11 @@ type ParameterProps = {
 };
 
 const Parameters: React.FC<ParameterProps> = ({ parameters, onClick }) => {
+  const [clicked, setClicked] = useState<boolean>(false);
+
   const handleParameterSelection = (parameter: string) => {
     onClick(parameter);
+    setClicked(true);
   };
 
   return (
@@ -26,6 +30,12 @@ const Parameters: React.FC<ParameterProps> = ({ parameters, onClick }) => {
             {parameter.toUpperCase()}
           </p>
         ))}
+        <img
+          src={clickIcon}
+          className={`${
+            !clicked ? "visible" : "hidden"
+          } w-6 h-6 absolute mt-6 ml-[-10px] rotate-45 animate-resize`}
+        />
       </div>
     </div>
   );

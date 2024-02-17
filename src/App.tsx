@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Parameters } from "./components";
+
 type ParameterTypes = {
   lowercase: boolean;
   uppercase: boolean;
