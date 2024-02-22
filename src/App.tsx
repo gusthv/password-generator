@@ -96,7 +96,7 @@ const App: React.FC = () => {
       <div className="h-screen flex items-center justify-center">
         <div className="w-min-content h-min-content shadow-2xl">
           <p
-            className={`w-[280px] py-2 bg-[#4a4a4a20] overflow-auto text-[#686868] text-xl text-nowrap text-center font-bold hover:shadow-md`}
+            className={`w-[280px] py-2 bg-[#4a4a4a20] overflow-auto text-[#686868] text-xl text-nowrap text-center font-bold hover:shadow-md rounded-t-md`}
           >
             {isCopied ? copyString : password}
           </p>

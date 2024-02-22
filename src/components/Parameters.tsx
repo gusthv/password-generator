@@ -25,7 +25,13 @@ const Parameters: React.FC<ParameterProps> = ({ parameters, onClick }) => {
               isActive
                 ? "text-[#686868] hover:text-[#a6a6a6]"
                 : "text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
-            } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer`}
+            } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer ${
+              parameter == "numbers"
+                ? "rounded-bl-md"
+                : parameter == "symbols"
+                ? "rounded-br-md"
+                : ""
+            }`}
           >
             {parameter.toUpperCase()}
           </p>
@@ -34,7 +40,7 @@ const Parameters: React.FC<ParameterProps> = ({ parameters, onClick }) => {
           src={clickIcon}
           className={`${
             !clicked ? "visible" : "hidden"
-          } w-6 h-6 absolute mt-6 ml-[-10px] rotate-45 animate-resize`}
+          } w-6 h-6 absolute mt-6 ml-[-10px] rotate-45 animate-resize pointer-events-none`}
         />
       </div>
     </div>
