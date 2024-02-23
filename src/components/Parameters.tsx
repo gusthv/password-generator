@@ -25,13 +25,7 @@ const Parameters: React.FC<ParameterProps> = ({ parameters, onClick }) => {
               isActive
                 ? "text-[#686868] hover:text-[#a6a6a6]"
                 : "text-[#a6a6a6] hover:text-[#686868] hover:shadow-md"
-            } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer ${
-              parameter == "numbers"
-                ? "rounded-bl-md"
-                : parameter == "symbols"
-                ? "rounded-br-md"
-                : ""
-            }`}
+            } w-[140px] h-[40px] bg-[#4a4a4a20] flex justify-center items-center font-bold cursor-pointer`}
           >
             {parameter.toUpperCase()}
           </p>
